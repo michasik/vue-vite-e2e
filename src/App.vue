@@ -17,7 +17,6 @@ const toggleItemDone = (item) => {
   } else {
     doneList.value.push(item);
   }
-  console.log(doneList.value)
 }
 
 const removeItem = (index) => {
