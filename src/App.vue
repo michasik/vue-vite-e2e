@@ -17,7 +17,6 @@ const toggleItemDone = (item) => {
   } else {
     doneList.value.push(item);
   }
-  console.log(doneList.value)
 }
 
 const removeItem = (index) => {
@@ -36,12 +35,12 @@ const deleteAll = () => {
 
 <template>
   <div id="app">
-    <span>Authors:</span>
+    <!-- <span>Authors:</span>
     <ul>
       <li>Me</li>
       <li>Myself</li>
       <li>I</li>
-    </ul>
+    </ul> -->
     <input type="text" v-model="newItem" @keyup.enter="addItem" />
     <button @click="addItem" v-text="'add new item'" />
 
