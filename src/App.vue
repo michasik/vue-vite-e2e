@@ -67,7 +67,7 @@ const deleteAll = () => {
       <button class="bg-delete" @click="deleteAll" v-text="'delete all'" />
     </section>
     <section>
-      version: 0.0.14
+      version: 0.0.15
     </section>
   </div>
 </template>
