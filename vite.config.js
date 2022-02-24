@@ -3,5 +3,9 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: (process.env.NODE_ENV === 'production' ? '/vue-vite-e2e/' : '/'),
+  preview: {
+    port: 6969,
+  },
   plugins: [vue()]
 })
