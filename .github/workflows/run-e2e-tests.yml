@@ -13,4 +13,5 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - run: yarn build
-      - run: yarn cypress run
+      - run: yarn preview
+      - run: yarn cypress run --port 6969
