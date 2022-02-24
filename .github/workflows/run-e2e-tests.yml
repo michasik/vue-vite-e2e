@@ -27,4 +27,4 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: yarn build
-          start: yarn preview --port 3000/vue-vite-e2e/
+          start: yarn preview --port 3000
