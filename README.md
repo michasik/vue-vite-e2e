@@ -1,4 +1,4 @@
-![ci](https://github.com/michasik/vue-vite-e2e/actions/workflows/ci.yml/badge.svg)
+![ci](https://github.com/michasik/vue-vite-e2e/actions/workflows/deploy.yml/badge.svg)
 
 # Vue 3 + Vite
 
