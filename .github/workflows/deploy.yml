@@ -45,8 +45,25 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - run: yarn --frozen-lockfile
-    - run: yarn build
+    - name: Install dependencies 🛠
+      run: yarn --frozen-lockfile
+
+    - name: Build App ⚙ 🦺
+      run: yarn build
+
+    - name: Cypress run 🧪
+      uses: cypress-io/github-action@v2
+      with:
+        build: yarn build
+        start: yarn preview --port 3000
+
+    - name: Upload artifacts on fail 📷
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: failing-e2e-screenshots
+        path: cypress/screenshots/
+        
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
