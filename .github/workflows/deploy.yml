@@ -27,7 +27,7 @@ jobs:
   #         name: failing-e2e-screenshots
   #         path: cypress/screenshots/
 
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     strategy:

@@ -3,9 +3,9 @@ describe("The to do app", () => {
       cy.visit("/");
     });
 
-    it("should FAIL", () => {
-      cy.the("to-do-list").children().should("have.length", 0);
-    });
+    // it("should FAIL", () => {
+    //   cy.the("to-do-list").children().should("have.length", 0);
+    // });
   
     it("shows two initial items in the list", () => {
       cy.the("to-do-list").children().should("have.length", 2);
