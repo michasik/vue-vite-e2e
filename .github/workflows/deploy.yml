@@ -30,9 +30,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      deploy_main: halabala
-
     strategy:
       matrix:
         node-version: [17.4.0]
@@ -40,6 +37,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    # E2E tests
+    - name: Cypress run 🧪
+      uses: cypress-io/github-action@v2
+      with:
+        build: yarn build
+        start: yarn preview --port 3000
+    - name: Upload artifacts on fail 📷
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: failing-e2e-screenshots
+        path: cypress/screenshots/
+
+    # BUILD
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -49,21 +61,11 @@ jobs:
       run: yarn --frozen-lockfile
 
     - name: Build App ⚙ 🦺
+      env:
+        deploy_main: halabala
       run: yarn build
-
-    - name: Cypress run 🧪
-      uses: cypress-io/github-action@v2
-      with:
-        build: yarn build
-        start: yarn preview --port 3000
-
-    - name: Upload artifacts on fail 📷
-      uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: failing-e2e-screenshots
-        path: cypress/screenshots/
         
+    # DEPLOY
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
