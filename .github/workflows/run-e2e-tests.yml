@@ -32,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v2
         if: failure()
         with:
-          name: videos
-          path: cypress/videos/
+          name: failing-e2e-screenshots
+          path: cypress/screenshots/
