@@ -7,38 +7,25 @@ on:
     branches: [ master ]
     
 jobs:
-  # build:
+  # cypress-run:
   #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v2
-  #       with:
-  #         node-version: '17.4.0'
-  #     - name: Install dependencies
-  #       run: yarn --frozen-lockfile
-  #     - run: yarn build
-  #     - run: yarn preview
-  #     - run: yarn cypress run --port 6969
-  
-  cypress-run:
-    runs-on: ubuntu-latest
     
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          build: yarn build
-          start: yarn preview --port 3000
+  #     - name: Cypress run
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         build: yarn build
+  #         start: yarn preview --port 3000
 
-      - name: Upload artifacts on fail
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: failing-e2e-screenshots
-          path: cypress/screenshots/
+  #     - name: Upload artifacts on fail
+  #       uses: actions/upload-artifact@v2
+  #       if: failure()
+  #       with:
+  #         name: failing-e2e-screenshots
+  #         path: cypress/screenshots/
 
   build:
     runs-on: ubuntu-latest
